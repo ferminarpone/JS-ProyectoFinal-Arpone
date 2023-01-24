@@ -1,12 +1,602 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta name="description"
+        content="Productos. Fabricación y comercialización de muebles a medida de estilo industrial-La Plata">
+    <meta name="keywords" content="MUEBLES INDUSTRIALES, MUEBLES, MUEBLES A MEDIDA, PRODUCTOS, FABRICACION, DISEÑOS">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300&family=DM+Mono:wght@500&family=Montserrat&family=Questrial&family=Roboto:wght@500&display=swap"
+        rel="stylesheet">
+    <link rel="icon" href="logos/logo.png">
+
+    <script src="https://kit.fontawesome.com/dceefb6e3f.js" crossorigin="anonymous"></script>
+
+    <title>Productos - Muebles a medida de diseño industrial</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+
+    <link href="css/estilo.css" rel="stylesheet">
 </head>
+
 <body>
-    <h1>Hola mundo</h1>
+    <div>
+        <header>
+            <nav class="encabezado">
+                <div class="logo">
+                    <a><img src="logos/logo.png" alt="Logo" class="imgLogo"></a>
+                </div>
+
+                <div class="titulo">
+                    <h1><a>EL GALPON DE NINO </a></h1>
+                </div>
+                
+                <input type="checkbox" id="check">
+                <label for="check" class="menuH">
+                    <i class="fa-solid fa-bars"></i>
+                </label>
+
+                <ul class="menu">
+                    <li><a>Home</a></li>
+                    <li><a>Insipiración</a></li>
+                    <li><a>Productos</a></li>
+                    <li><a>Conocenos</a></li>
+                    <li><a>Contacto</a></li>
+
+                    <li>
+                        <button class="btn" type="button" id="btnHtmlCarrito">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-cart" viewBox="0 0 16 16">
+                                <path
+                                    d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+                            </svg> <span class="badge text-bg-danger rounded-circle" id="logoCarrito"></span> </button>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+    </div>
+
+    <main>
+        <section style="position: relative;">
+            <div class="container" id="productos">
+                <div class="introduccion">
+                    <h2 class="text-center">GALERIA DE PRODUCTOS</h2>
+                    <div class="parrafo">
+                        <p>
+                            Nuestros productos de estilo industrial se realizan a medida para cada cliente. <br>
+                            Estos son algunos de nuestros proyectos. <br> <a>
+                                Pedí tu presupuesto!</a>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="row row-cols-2 row-cols-md-4 g-3">
+                    <div class="col">
+                        <div class="card">
+                            <a href="" data-bs-toggle="modal" data-bs-target="#mesaYsillas">
+                                <img src="fotos/Productos/Juego de mesas y sillas.jpg" class="card-img-top"
+                                    alt="Juego de mesa con sillas">
+                            </a>
+                            <div class="card-body">
+                                <h3 class="card-title text-center">JUEGO DE JARDIN</h3>
+                                <p class="h5 text-center">$150.000</p>
+                                <div class="d-flex justify-content-center">
+                                    <button type="button" class="btn btn-primary java" data-id="1">Agregar a
+                                        carrito</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal fade" id="mesaYsillas" tabindex="-1" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered imgCenter">
+                            <img src="fotos/Productos/Juego de mesas y sillas.jpg" class="img-fluid rounded"
+                                alt="Juego de mesa con sillas">
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <div class="card">
+                            <a href="" data-bs-toggle="modal" data-bs-target="#escritorio">
+                                <img src="fotos/Productos/Escritorio.jpg" class="card-img-top" alt="Escritorio">
+                            </a>
+                            <div class="card-body">
+                                <h3 class="card-title text-center">ESCRTITORIO INDUSTRIAL</h3>
+                                <p class="h5 text-center">$70.000</p>
+                                <div class="d-flex justify-content-center">
+                                    <button type="button" class="btn btn-primary java" data-id="2">Agregar a
+                                        carrito</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal fade" id="escritorio" tabindex="-1" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered imgCenter">
+                            <img src="fotos/Productos/Escritorio.jpg" class="img-fluid rounded" alt="Escritorio">
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <div class="card">
+                            <a href="" data-bs-toggle="modal" data-bs-target="#Recibidor">
+                                <img src="fotos/Productos/Recibidor.jpg" class="card-img-top" alt="Recibidor">
+                            </a>
+                            <div class="card-body">
+                                <h3 class="card-title text-center">RECIBIDOR</h3>
+                                <p class="h5 text-center">$60.000</p>
+                                <div class="d-flex justify-content-center">
+                                    <button type="button" class="btn btn-primary java" data-id="3">Agregar a
+                                        carrito</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal fade" id="Recibidor" tabindex="-1" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered imgCenter">
+                            <img src="fotos/Productos/Recibidor.jpg" class="img-fluid rounded" alt="Recibidor">
+                        </div>
+                    </div>
+
+
+
+                    <div class="col">
+                        <div class="card">
+                            <a href="" data-bs-toggle="modal" data-bs-target="#Perchero">
+                                <img src="fotos/Productos/Perchero.jpg" class="card-img-top" alt="Perchero">
+                            </a>
+                            <div class="card-body">
+                                <h3 class="card-title text-center">PERCHERO</h3>
+                                <p class="h5 text-center">$15.000</p>
+                                <div class="d-flex justify-content-center">
+                                    <button type="button" class="btn btn-primary java" data-id="4">Agregar a
+                                        carrito</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal fade" id="Perchero" tabindex="-1" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered imgCenter">
+                            <img src="fotos/Productos/Perchero.jpg" class="img-fluid rounded" alt="Perchero">
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <div class="card">
+                            <a href="" data-bs-toggle="modal" data-bs-target="#Perchero2">
+                                <img src="fotos/Productos/Perchero 2.jpg" class="card-img-top" alt="Perchero">
+                            </a>
+                            <div class="card-body">
+                                <h3 class="card-title text-center">PERCHERO</h3>
+                                <p class="h5 text-center">$15.000</p>
+                                <div class="d-flex justify-content-center">
+                                    <button type="button" class="btn btn-primary java" data-id="5">Agregar a
+                                        carrito</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal fade" id="Perchero2" tabindex="-1" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered imgCenter">
+                            <img src="fotos/Productos/Perchero 2.jpg" class="img-fluid rounded" alt="Perchero">
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <div class="card">
+                            <a href="" data-bs-toggle="modal" data-bs-target="#Casco">
+                                <img src="fotos/Productos/Soporte para casco.jpg" class="card-img-top"
+                                    alt="Soporte para cascos">
+                            </a>
+                            <div class="card-body">
+                                <h3 class="card-title text-center">SOPORTE PARA CASCOS</h3>
+                                <p class="h5 text-center">$25.000</p>
+                                <div class="d-flex justify-content-center">
+                                    <button type="button" class="btn btn-primary java" data-id="6">Agregar a
+                                        carrito</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal fade" id="Casco" tabindex="-1" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered imgCenter">
+                            <img src="fotos/Productos/Soporte para casco.jpg" class="img-fluid rounded"
+                                alt="Soporte para cascos">
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <div class="card">
+                            <a href="" data-bs-toggle="modal" data-bs-target="#Casco1">
+                                <img src="fotos/Productos/Soporte para casco 2.jpg" class="card-img-top"
+                                    alt="Soporte para cascos">
+                            </a>
+                            <div class="card-body">
+                                <h3 class="card-title text-center">SOPORTE PARA CASCOS</h3>
+                                <p class="h5 text-center">$25.000</p>
+                                <div class="d-flex justify-content-center">
+                                    <button type="button" class="btn btn-primary java" data-id="6">Agregar a
+                                        carrito</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal fade" id="Casco1" tabindex="-1" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered imgCenter">
+                            <img src="fotos/Productos/Soporte para casco 2.jpg" class="img-fluid rounded"
+                                alt="Soporte para cascos">
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <div class="card">
+                            <a href="" data-bs-toggle="modal" data-bs-target="#MesaArrime">
+                                <img src="fotos/Productos/Mesa de arrime.jpg" class="card-img-top"
+                                    alt="Mesa de arrime">
+                            </a>
+                            <div class="card-body">
+                                <h3 class="card-title text-center">MESA DE ARRIME</h3>
+                                <p class="h5 text-center">$25.000</p>
+                                <div class="d-flex justify-content-center">
+                                    <button type="button" class="btn btn-primary java" data-id="7">Agregar a
+                                        carrito</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal fade" id="MesaArrime" tabindex="-1" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered imgCenter">
+                            <img src="fotos/Productos/Mesa de arrime.jpg" class="img-fluid rounded"
+                                alt="Mesa de arrime">
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <div class="card">
+                            <a href="" data-bs-toggle="modal" data-bs-target="#RackTv">
+                                <img src="fotos/Productos/Rack de tv.jpg" class="card-img-top" alt="Rack de TV">
+                            </a>
+                            <div class="card-body">
+                                <h3 class="card-title text-center">RACK DE TV</h3>
+                                <p class="h5 text-center">$150.000</p>
+                                <div class="d-flex justify-content-center">
+                                    <button type="button" class="btn btn-primary java" data-id="8">Agregar a
+                                        carrito</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal fade" id="RackTv" tabindex="-1" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered imgCenter">
+                            <img src="fotos/Productos/Rack de tv.jpg" class="img-fluid rounded" alt="Rack de TV">
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <div class="card">
+                            <a href="" data-bs-toggle="modal" data-bs-target="#PortaMaceta2">
+                                <img src="fotos/Productos/Porta maceta 1.jpg" class="card-img-top" alt="Porta maceta">
+                            </a>
+                            <div class="card-body">
+                                <h3 class="card-title text-center">MACETERO DE EXTERIOR</h3>
+                                <p class="h5 text-center">$6.000</p>
+                                <div class="d-flex justify-content-center">
+                                    <button type="button" class="btn btn-primary java" data-id="9">Agregar a
+                                        carrito</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal fade" id="PortaMaceta2" tabindex="-1" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered imgCenter">
+                            <img src="fotos/Productos/Porta maceta 1.jpg" class="img-fluid rounded" alt="Porta maceta">
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <div class="card">
+                            <a href="" data-bs-toggle="modal" data-bs-target="#PortaMaceta">
+                                <img src="fotos/Productos/Porta maceta 2.jpg" class="card-img-top" alt="Porta maceta">
+                            </a>
+                            <div class="card-body">
+                                <h3 class="card-title text-center">PORTA MACETA DE EXTERIOR</h3>
+                                <p class="h5 text-center">$1.500</p>
+                                <div class="d-flex justify-content-center">
+                                    <button type="button" class="btn btn-primary java" data-id="10">Agregar a
+                                        carrito</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal fade" id="PortaMaceta" tabindex="-1" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered imgCenter">
+                            <img src="fotos/Productos/Porta maceta 2.jpg" class="img-fluid rounded" alt="Porta maceta">
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <div class="card">
+                            <a href="" data-bs-toggle="modal" data-bs-target="#Fogonero">
+                                <img src="fotos/Productos/Fogonero.jpg" class="card-img-top" alt="Porta maceta">
+                            </a>
+                            <div class="card-body">
+                                <h3 class="card-title text-center">FOGONERO</h3>
+                                <p class="h5 text-center">$60.000</p>
+                                <div class="d-flex justify-content-center">
+                                    <button type="button" class="btn btn-primary java" data-id="11">Agregar a
+                                        carrito</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal fade" id="Fogonero" tabindex="-1" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered imgCenter">
+                            <img src="fotos/Productos/Fogonero.jpg" class="img-fluid rounded" alt="Porta maceta">
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <div class="card">
+                            <a href="" data-bs-toggle="modal" data-bs-target="#Macetero">
+                                <img src="fotos/Productos/Macetero.jpg" class="card-img-top" alt="Macetero">
+                            </a>
+                            <div class="card-body">
+                                <h3 class="card-title text-center">MACETEROS</h3>
+                                <p class="h5 text-center">$10.000</p>
+                                <div class="d-flex justify-content-center">
+                                    <button type="button" class="btn btn-primary java" data-id="12">Agregar a
+                                        carrito</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal fade" id="Macetero" tabindex="-1" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered imgCenter">
+                            <img src="fotos/Productos/Macetero.jpg" class="img-fluid rounded" alt="Macetero">
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <div class="card">
+                            <a href="" data-bs-toggle="modal" data-bs-target="#Lampara">
+                                <img src="fotos/Productos/Lampara industrial.jpg" class="card-img-top"
+                                    alt="Lampara Industriales">
+                            </a>
+                            <div class="card-body">
+                                <h3 class="card-title text-center">LAMPARA INDUSTRIAL</h3>
+                                <p class="h5 text-center">$15.000</p>
+                                <div class="d-flex justify-content-center">
+                                    <button type="button" class="btn btn-primary java" data-id="13">Agregar a
+                                        carrito</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal fade" id="Lampara" tabindex="-1" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered imgCenter">
+                            <img src="fotos/Productos/Lampara industrial.jpg" class="img-fluid rounded"
+                                alt="Lampara Industriales">
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <div class="card">
+                            <a href="" data-bs-toggle="modal" data-bs-target="#Banqueta">
+                                <img src="fotos/Productos/Banqueta de campo.jpg" class="card-img-top"
+                                    alt="Banqueta con disco de arado">
+                            </a>
+                            <div class="card-body">
+                                <h3 class="card-title text-center">BANQUETA DISCO DE ARADO</h3>
+                                <p class="h5 text-center">$10.000</p>
+                                <div class="d-flex justify-content-center">
+                                    <button type="button" class="btn btn-primary java" data-id="14">Agregar a
+                                        carrito</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal fade" id="Banqueta" tabindex="-1" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered imgCenter">
+                            <img src="fotos/Productos/Banqueta de campo.jpg" class="img-fluid rounded"
+                                alt="Banqueta con disco de arado">
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <div class="card">
+                            <a href="" data-bs-toggle="modal" data-bs-target="#Barra">
+                                <img src="fotos/Productos/Barra.jpg" class="card-img-top" alt="Barra">
+                            </a>
+                            <div class="card-body">
+                                <h3 class="card-title text-center">BARRA DE INTERIOR</h3>
+                                <p class="h5 text-center">$30.000</p>
+                                <div class="d-flex justify-content-center">
+                                    <button type="button" class="btn btn-primary java" data-id="15">Agregar a
+                                        carrito</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal fade" id="Barra" tabindex="-1" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered imgCenter">
+                            <img src="fotos/Productos/Barra.jpg" class="img-fluid rounded" alt="Barra">
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <div class="card">
+                            <a href="" data-bs-toggle="modal" data-bs-target="#Escritorio3">
+                                <img src="fotos/Productos/Escritorio 3.jpg" class="card-img-top" alt="Escritorio">
+                            </a>
+                            <div class="card-body">
+                                <h3 class="card-title text-center">ESCRITORIO</h3>
+                                <p class="h5 text-center">$30.000</p>
+                                <div class="d-flex justify-content-center">
+                                    <button type="button" class="btn btn-primary java" data-id="16">Agregar a
+                                        carrito</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal fade" id="Escritorio3" tabindex="-1" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered imgCenter">
+                            <img src="fotos/Productos/Escritorio 3.jpg" class="img-fluid rounded" alt="Escritorio">
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <div class="card">
+                            <a href="" data-bs-toggle="modal" data-bs-target="#LivingRecibidor">
+                                <img src="fotos/Productos/Recibidor 3.jpg" class="card-img-top" alt="Living recibidor">
+                            </a>
+                            <div class="card-body">
+                                <h3 class="card-title text-center">RECIBIDOR</h3>
+                                <p class="h5 text-center">$40.000</p>
+                                <div class="d-flex justify-content-center">
+                                    <button type="button" class="btn btn-primary java" data-id="17">Agregar a
+                                        carrito</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal fade" id="LivingRecibidor" tabindex="-1" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered imgCenter">
+                            <img src="fotos/Productos/Recibidor 3.jpg" class="img-fluid rounded"
+                                alt="Living recibidor">
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <div class="card">
+                            <a href="" data-bs-toggle="modal" data-bs-target="#Estanteria">
+                                <img src="fotos/Productos/Estanteria.jpg" class="card-img-top" alt="Estanteria">
+                            </a>
+                            <div class="card-body">
+                                <h3 class="card-title text-center">ESTANTERIA</h3>
+                                <p class="h5 text-center">$15.000</p>
+                                <div class="d-flex justify-content-center">
+                                    <button type="button" class="btn btn-primary java" data-id="18">Agregar a
+                                        carrito</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal fade" id="Estanteria" tabindex="-1" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered imgCenter">
+                            <img src="fotos/Productos/Estanteria.jpg" class="img-fluid rounded" alt="Estanteria">
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <div class="card">
+                            <a href="" data-bs-toggle="modal" data-bs-target="#MesaRatona">
+                                <img src="fotos/Productos/Mesa ratona 1.jpeg" class="card-img-top"
+                                    alt="Mesa de centro">
+                            </a>
+                            <div class="card-body">
+                                <h3 class="card-title text-center">MESA DE CENTRO</h3>
+                                <p class="h5 text-center">$40.000</p>
+                                <div class="d-flex justify-content-center">
+                                    <button type="button" class="btn btn-primary java" data-id="19">Agregar a
+                                        carrito</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal fade" id="MesaRatona" tabindex="-1" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered imgCenter">
+                            <img src="fotos/Productos/Mesa ratona 1.jpeg" class="img-fluid rounded"
+                                alt="Mesa de centro">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div id="nuevoHtml" class="toggles d-none">
+                <button id="cerrarHtml" type="button" class="btn btn-light "
+                    style="position:absolute; right:6px; top:7px;">x</button>
+                <div class="d-flex flex-column align-items-center">
+
+                    <h2 class="m-5">Productos seleccionados
+                    </h2>
+
+                    <div class="d-block" id="htmlCarrito">
+                    </div>
+                </div>
+                <p class="h5 m-3" id="montoTotal"></p>
+            </div>
+        </section>
+    </main>
+    <footer id="footer" class="container">
+        <div class="footerR">
+            <a class="logoFooter"><img src="logos/logo.png" alt="Logo" class="imgLogoFooter"></a>
+            <div class="flexFoot">
+                <h3 class="titFooter"> © 2022 Muebles Industriales - El Galpon de Nino<br>
+                    <span class="footerD">Todos los derechos reservados</span>
+                </h3>
+            </div>
+        </div>
+        <div class="footerL">
+            <h3>Buscanos en Instragram:</h3>
+            <ul>
+                <a href="https://instagram.com/industrial.muebleslp?igshid=YmMyMTA2M2Y="><img
+                        src="logos/logoinstagram.png" alt="Instagram" class="ig"></a>
+            </ul>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+        crossorigin="anonymous"></script>
+
+    <script src="js/scritp.js"></script>
+
 </body>
+
 </html>
