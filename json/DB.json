@@ -1,0 +1,22 @@
+[
+    {"nombre":"Juego de jardin", "precio":"150.000", "id":1, "stock":1, "img":"fotos/Productos/Juego de mesas y sillas.jpg"},
+    {"nombre":"Escritorio industrial", "precio":"70.000", "id":2, "stock":1, "img":"fotos/Productos/Escritorio.jpg"},
+    {"nombre":"Recibidor", "precio":"60.000", "id":3, "stock":1, "img":"fotos/Productos/Recibidor.jpg"},
+    {"nombre":"Perchero industrial", "precio":"15.000", "id":4, "stock":1, "img":"fotos/Productos/Perchero.jpg"},
+    {"nombre":"Perchero", "precio":"15.000", "id":5, "stock":1, "img":"fotos/Productos/Perchero 2.jpg"},
+    {"nombre":"Soporte para cascos", "precio":"25.000", "id":6, "stock":1, "img":"fotos/Productos/Soporte para casco.jpg"},
+    {"nombre":"Mesa de arrime", "precio":"25.000", "id":7, "stock":1, "img":"fotos/Productos/Mesa de arrime.jpg"},
+    {"nombre":"Rack de Tv", "precio":"150.000", "id":8, "stock":1, "img":"fotos/Productos/Rack de tv.jpg"},
+    {"nombre":"Macetero de exterior", "precio":"6.000", "id":9, "stock":1, "img":"fotos/Productos/Porta maceta 1.jpg"},
+    {"nombre":"Porta maceta de exterior", "precio":"1.500", "id":10, "stock":1, "img":"fotos/Productos/Porta maceta 2.jpg"},
+    {"nombre":"Fogonero", "precio":"60.000", "id":11, "stock":1, "img":"fotos/Productos/Fogonero.jpg"},
+    {"nombre":"Maceteros", "precio":"10.000", "id":12, "stock":1, "img":"fotos/Productos/Macetero.jpg"},
+    {"nombre":"Lampara industrial", "precio":"15.000", "id":13, "stock":1, "img":"fotos/Productos/Lampara industrial.jpg"},
+    {"nombre":"Banqueta disco de arado", "precio":"10.000", "id":14, "stock":1, "img":"fotos/Productos/Banqueta de campo.jpg"},
+    {"nombre":"Barra de interior", "precio":"30.000", "id":15, "stock":1, "img":"fotos/Productos/Barra.jpg"},
+    {"nombre":"Escritorio", "precio":"30.000", "id":16, "stock":1, "img":"fotos/Productos/Escritorio 3.jpg"},
+    {"nombre":"Recibidor", "precio":"40.000", "id":17, "stock":1, "img":"fotos/Productos/Recibidor 3.jpg"},
+    {"nombre":"Estanteria", "precio":"15.000", "id":18, "stock":1, "img":"fotos/Productos/Estanteria.jpg"},
+    {"nombre":"Mesa ratona", "precio":"40.000", "id":19, "stock":1, "img":"fotos/Productos/Mesa ratona 1.jpeg"}
+
+]

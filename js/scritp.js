@@ -1,3 +1,21 @@
+// Declarar variables para capturar elementos
+
+const cantProducto = document.querySelector("#logoCarrito"),
+    btnHtmlCarrito = document.querySelector("#btnHtmlCarrito"),
+    htmlCarrito = document.querySelector("#htmlCarrito"),
+    toggles = document.querySelectorAll('.toggles'),
+    total = document.querySelector("#montoTotal"),
+    cerrarHtml = document.querySelector("#cerrarHtml"),
+    clickFuera = document.querySelector("#productos"),
+    container = document.querySelector("#container");
+
+//Declaración de variables
+
+let carrito =  JSON.parse(localStorage.getItem("carrito")) || [];
+const productos = [];
+let carritoEnStorage;
+let id;
+
 // Crear una clase para generar objetos 
 
 class Producto {
@@ -7,50 +25,115 @@ class Producto {
         this.id = id;
         this.stock = stock;
         this.img = img;
+    };
+
+    visualizarProductos(){
+       const card  = `
+        <div class="col">
+            <div class="card">
+                <a href="" data-bs-toggle="modal" data-bs-target="#producto${this.id}">
+                    <img src="${this.img}" class="card-img-top h6"
+                        alt="${this.nombre}">
+                </a>
+                <div class="card-body">
+                    <h3 class="card-title text-center">${this.nombre}</h3>
+                    <p class="h5 text-center">$${this.precio}</p>
+                    <div class="d-flex justify-content-center">
+                        <button type="button" class="btn btn-primary" id="producto${this.id}">Agregar a
+                            carrito</button>
+                    </div>
+                </div>
+            </div>
+         </div>
+        `;
+        container.innerHTML+= card; 
+    };
+    agregarEvento(){
+        const btnProducto = document.getElementById(`producto${this.id}`);
+        const encontrarProd = productos.find( (p)=> p.id == this.id);
+        btnProducto.addEventListener("click", ()=>agregarCarrito(encontrarProd));
     }
+};
+
+
+
+//Funcion asincronica para traer informacion de una API/archivo json
+
+const leerDB = async () => {
+    const resp = await fetch("./json/DB.json");
+    const data = await resp.json();
+
+    data.forEach((prod) => {
+        let newProducto = new Producto (prod.nombre, prod.precio, prod.id, prod.stock, prod.img);
+        productos.push(newProducto);
+    });
+    productos.forEach((el)=>{
+        el.visualizarProductos();
+    })
+    productos.forEach((el)=>{
+        el.agregarEvento();
+    })
+};
+leerDB();
+
+// Operador ternario para mostrar cantidad de productos en carrito
+
+carrito == 0 ? cantProducto.innerHTML = "" : cantProducto.innerHTML = carrito.reduce((acc,prod)=> acc + prod.cantidad, 0);
+
+function agregarCarrito(producto){
+    const cargado = carrito.find(p => p.id == producto.id);
+    if(!cargado){
+        carrito.push({...producto , cantidad:1 });
+        localStorage.setItem("carrito", JSON.stringify(carrito));
+    }
+    else{
+        const filtrado = carrito.filter(p => p.id != cargado.id);
+        carrito = 
+        [... filtrado,
+            {
+                ...cargado,
+                cantidad: cargado.cantidad + 1
+            }
+        ]
+        localStorage.setItem("carrito", JSON.stringify(carrito));
+    }
+    cantProducto.innerHTML = carrito.reduce((acc,prod)=> acc + prod.cantidad, 0)
 }
+
+
+
+
 
 // Creacion de array para guardar los objetos
 
+/* ARRAY PRODUCTOS COMENTADO PARA TRAERLO CON FETCH
+
 const productos = [
-    new Producto("Juego de jardin", "150.000", 1, 1, "fotos/Productos/Juego de mesas y sillas.jpg"),
-    new Producto("Escritorio industrial", "70.000", 2, 1, "fotos/Productos/Escritorio.jpg"),
-    new Producto("Recibidor", "60.000", 3, 1, "fotos/Productos/Recibidor.jpg"),
-    new Producto("Perchero industrial", "15.000", 4, 1, "fotos/Productos/Perchero.jpg"),
-    new Producto("Perchero", "15.000", 5, 1, "fotos/Productos/Perchero 2.jpg"),
-    new Producto("Soporte para cascos", "25.000", 6, 1, "fotos/Productos/Soporte para casco.jpg"),
-    new Producto("Mesa de arrime", "25.000", 7, 1, "fotos/Productos/Mesa de arrime.jpg"),
-    new Producto("Rack de Tv", "150.000", 8, 1, "fotos/Productos/Rack de tv.jpg"),
-    new Producto("Macetero de exterior", "6.000", 9, 1, "fotos/Productos/Porta maceta 1.jpg"),
-    new Producto("Porta maceta de exterior", "1.500", 10, 1, "fotos/Productos/Porta maceta 2.jpg"),
-    new Producto("Fogonero", "60.000", 11, 1, "fotos/Productos/Fogonero.jpg"),
-    new Producto("Maceteros", "10.000", 12, 1, "fotos/Productos/Macetero.jpg"),
-    new Producto("Lampara industrial", "15.000", 13, 1, "fotos/Productos/Lampara industrial.jpg"),
-    new Producto("Banqueta disco de arado", "10.000", 14, 1, "fotos/Productos/Banqueta de campo.jpg"),
-    new Producto("Barra de interior", "30.000", 15, 1, "fotos/Productos/Barra.jpg"),
-    new Producto("Escritorio", "30.000", 16, 1, "fotos/Productos/Escritorio 3.jpg"),
-    new Producto("Recibidor", "40.000", 17, 1, "fotos/Productos/Recibidor 3.jpg"),
-    new Producto("Estanteria", "15.000", 18, 1, "fotos/Productos/Estanteria.jpg"),
-    new Producto("Mesa ratona", "40.000", 19, 1, "fotos/Productos/Mesa ratona 1.jpeg"),
+new Producto("Juego de jardin", "150.000", 1, 1, "fotos/Productos/Juego de mesas y sillas.jpg"),
+new Producto("Escritorio industrial", "70.000", 2, 1, "fotos/Productos/Escritorio.jpg"),
+new Producto("Recibidor", "60.000", 3, 1, "fotos/Productos/Recibidor.jpg"),
+new Producto("Perchero industrial", "15.000", 4, 1, "fotos/Productos/Perchero.jpg"),
+new Producto("Perchero", "15.000", 5, 1, "fotos/Productos/Perchero 2.jpg"),
+new Producto("Soporte para cascos", "25.000", 6, 1, "fotos/Productos/Soporte para casco.jpg"),
+new Producto("Mesa de arrime", "25.000", 7, 1, "fotos/Productos/Mesa de arrime.jpg"),
+new Producto("Rack de Tv", "150.000", 8, 1, "fotos/Productos/Rack de tv.jpg"),
+new Producto("Macetero de exterior", "6.000", 9, 1, "fotos/Productos/Porta maceta 1.jpg"),
+new Producto("Porta maceta de exterior", "1.500", 10, 1, "fotos/Productos/Porta maceta 2.jpg"),
+new Producto("Fogonero", "60.000", 11, 1, "fotos/Productos/Fogonero.jpg"),
+new Producto("Maceteros", "10.000", 12, 1, "fotos/Productos/Macetero.jpg"),
+new Producto("Lampara industrial", "15.000", 13, 1, "fotos/Productos/Lampara industrial.jpg"),
+new Producto("Banqueta disco de arado", "10.000", 14, 1, "fotos/Productos/Banqueta de campo.jpg"),
+new Producto("Barra de interior", "30.000", 15, 1, "fotos/Productos/Barra.jpg"),
+new Producto("Escritorio", "30.000", 16, 1, "fotos/Productos/Escritorio 3.jpg"),
+new Producto("Recibidor", "40.000", 17, 1, "fotos/Productos/Recibidor 3.jpg"),
+new Producto("Estanteria", "15.000", 18, 1, "fotos/Productos/Estanteria.jpg"),
+new Producto("Mesa ratona", "40.000", 19, 1, "fotos/Productos/Mesa ratona 1.jpeg"),
 
-]
+] */
 
-// Declarar variables para capturar elementos
 
-const btnProducto = document.querySelectorAll(".java"),
-    cantProducto = document.querySelector("#logoCarrito"),
-    btnHtmlCarrito = document.querySelector("#btnHtmlCarrito"),
-    htmlCarrito = document.querySelector("#htmlCarrito"),
-    toggles = document.querySelectorAll('.toggles'),
-    total = document.querySelector("#montoTotal"),
-    cerrarHtml = document.querySelector("#cerrarHtml"),
-    clickFuera = document.querySelector("#productos");
+/* 
 
-//Declaración de variables
-
-let carrito = [];
-let carritoEnStorage;
-let id;
 
 //Condicional para mostrar cantidad de articulos en el carrito
 if (carrito == 0) {
@@ -61,14 +144,15 @@ else {
     cantProducto.innerHTML = carrito.length;
 }
 
-//Evento para agregar productos a carrito
+// VEEEEEERRRR    Evento para agregar productos a carrito
+
 
 btnProducto.forEach((boton) => {
     boton.addEventListener("click", (e) => {
         id = e.target.getAttribute("data-id");
         agregarCarrito()
     });
-});
+}); 
 
 //Funcion para agregar productos al carrito
 
@@ -207,3 +291,4 @@ function sumadorDePrecios() {
     return numeroFormateado;
 }
 
+ */
