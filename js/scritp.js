@@ -85,6 +85,16 @@ cantidadCarrito()
 //Funcion para agregar productos al carrito
 
 function agregarCarrito(producto) {
+
+
+    Swal.fire({
+        width: '350px',
+        icon: 'success',
+        title: 'Producto agregado con exito!',
+        confirmButtonText: '<button id="seguirComprando"> Continuar comprando</button>',
+        showCancelButton: true,
+        cancelButtonText:'<div id="mostrarCarrito"> <button type="button">Ir al carrito</button> </div>',
+    })
     const cargado = carrito.find(p => p.id == producto.id);
     if (!cargado) {
         carrito.push({ ...producto, cantidad: 1 });
@@ -102,6 +112,10 @@ function agregarCarrito(producto) {
         localStorage.setItem("carrito", JSON.stringify(carrito));
     }
     cantidadCarrito()
+
+    const carro = document.getElementById("mostrarCarrito");
+    carro.addEventListener("click", carritoHTML);
+
 }
 
 //Evento para mostrar el carrito
@@ -180,7 +194,7 @@ function disminuirCantidad(e) {
 
         if (buscar.cantidad > 1) {
             carrito[posicion].cantidad = buscar.cantidad - 1;
-            localStorage.setItem("carrito", JSON.stringify(carrito)); 
+            localStorage.setItem("carrito", JSON.stringify(carrito));
         }
         else {
             carrito[posicion].cantidad = 1;
@@ -224,12 +238,12 @@ htmlCarrito.addEventListener("click", eliminarProducto)
 function eliminarProducto(e) {
     if (e.target.classList.contains("eliminar")) {
         let productoID = e.target.getAttribute("id");
-        const filtro = carrito.filter((el) => el.id != productoID);        
-        carrito = [...filtro];                
+        const filtro = carrito.filter((el) => el.id != productoID);
+        carrito = [...filtro];
         localStorage.setItem("carrito", JSON.stringify(carrito));
         presentarInfo(toggles, 'd-none');
         cantidadCarrito()
-        carritoHTML(); 
+        carritoHTML();
     }
 }
 

@@ -156,6 +156,11 @@
 
 #montoTotal { border:solid #151515;padding: 5px}
 
+#mostrarCarrito button{ all: unset; color: white; font-size:10px;}
+
+#seguirComprando { all: unset; color: white; font-size:10px;}
+
+
 @media screen and (min-width: 768px) { #principal h2 { padding-top: 4%; }
   #principal p { margin-top: 4%; }
   #principal .p1 { width: 350px; }
