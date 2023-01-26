@@ -11,7 +11,7 @@ const cantProducto = document.querySelector("#logoCarrito"),
 
 //Declaración de variables
 
-let carrito =  JSON.parse(localStorage.getItem("carrito")) || [];
+let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 const productos = [];
 let carritoEnStorage;
 let id;
@@ -27,8 +27,8 @@ class Producto {
         this.img = img;
     };
 
-    visualizarProductos(){
-       const card  = `
+    visualizarProductos() {
+        const card = `
         <div class="col">
             <div class="card">
                 <a href="" data-bs-toggle="modal" data-bs-target="#producto${this.id}">
@@ -46,12 +46,12 @@ class Producto {
             </div>
          </div>
         `;
-        container.innerHTML+= card; 
+        container.innerHTML += card;
     };
-    agregarEvento(){
+    agregarEvento() {
         const btnProducto = document.getElementById(`producto${this.id}`);
-        const encontrarProd = productos.find( (p)=> p.id == this.id);
-        btnProducto.addEventListener("click", ()=>agregarCarrito(encontrarProd));
+        const encontrarProd = productos.find((p) => p.id == this.id);
+        btnProducto.addEventListener("click", () => agregarCarrito(encontrarProd));
     }
 };
 
@@ -62,13 +62,13 @@ const leerDB = async () => {
     const data = await resp.json();
 
     data.forEach((prod) => {
-        let newProducto = new Producto (prod.nombre, prod.precio, prod.id, prod.stock, prod.img);
+        let newProducto = new Producto(prod.nombre, prod.precio, prod.id, prod.stock, prod.img);
         productos.push(newProducto);
     });
-    productos.forEach((el)=>{
+    productos.forEach((el) => {
         el.visualizarProductos();
     })
-    productos.forEach((el)=>{
+    productos.forEach((el) => {
         el.agregarEvento();
     })
 };
@@ -76,31 +76,32 @@ const leerDB = async () => {
 leerDB();
 
 // Operador ternario para mostrar cantidad de productos en carrito
-function cantidadCarrito(){
-carrito.length == 0 ? cantProducto.innerHTML = "" : cantProducto.innerHTML = carrito.reduce((acc,prod)=> acc + prod.cantidad, 0);
+
+function cantidadCarrito() {
+    carrito.length == 0 ? cantProducto.innerHTML = "" : cantProducto.innerHTML = carrito.reduce((acc, prod) => acc + prod.cantidad, 0);
 }
 cantidadCarrito()
+
 //Funcion para agregar productos al carrito
 
-function agregarCarrito(producto){
+function agregarCarrito(producto) {
     const cargado = carrito.find(p => p.id == producto.id);
-    if(!cargado){
-        carrito.push({...producto , cantidad:1 });
+    if (!cargado) {
+        carrito.push({ ...producto, cantidad: 1 });
         localStorage.setItem("carrito", JSON.stringify(carrito));
     }
-    else{
+    else {
         const filtrado = carrito.filter(p => p.id != cargado.id);
-        carrito = 
-        [... filtrado,
+        carrito =
+            [...filtrado,
             {
                 ...cargado,
                 cantidad: cargado.cantidad + 1
             }
-        ]
+            ]
         localStorage.setItem("carrito", JSON.stringify(carrito));
     }
     cantidadCarrito()
-    
 }
 
 //Evento para mostrar el carrito
@@ -112,35 +113,44 @@ btnHtmlCarrito.addEventListener("click", carritoHTML)
 function carritoHTML() {
     limpiarHTML();
     if (carrito.length != 0) {
-        carrito.forEach(el=>{
-            if(el.cantidad !=0){
+        carrito.forEach(el => {
+            if (el.cantidad != 0) {
                 row = document.createElement("div");
                 row.innerHTML = ` 
-                <div class="card d-flex justify-content-center align-items-center m-3" style="width:180px; background-color: #F9F5EB">
-                <h5 class="card-title d-block m-3">${el.nombre}</h5>
-                <img src="${el.img}" class="card-img-top d-block" alt="..." style="width:140px; height:140px"> 
-                <div class="card-body d-flex flex-column" >
-                <p class="card-text h6">Precio: $${el.precio}</p>
-                <button type="button" class="btn btn-danger d-block" id="${el.id}">Eliminar</button>
-                </div>
-                </div>
+                <div class="container">
+                
+                    <div class="card d-flex flex-row justify-content-between align-items-center m-2" style="width:420px; height:120px; background-color: #F9F5EB">
+                        <div class="d-flex flex-column align-items-center mb-2" style="width: 150px">
+                            <h5 class="card-title">${el.nombre}</h5>
+                            <img src="${el.img}" class="card-img-top;" alt="..." style="width:70px; height:70px"> 
+                        </div>
+
+                        <div>     
+                            <p class="card-text h5" style="width:70px" > $${el.precio}</p>
+                        </div>    
+                    
+                        <div class="d-flex align-items-center" >
+                            <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
+                                <button type="button" class="btn btn-primary btn-sm mb-1" id="${el.id}">+</button>
+                                <button type="button" class="btn btn-danger disminuir btn-sm" id="${el.id}">-</button>
+                            </div>
+                            <p class=" p-2 ms-2 h6 border border-dark rounded" style="width: 18px">${el.cantidad}</p>
+                        </div>                    
+                        <button type="button" class="btn btn-danger btn-sm eliminar  me-4" id="${el.id}">Eliminar</button>                               
+                    </div>
+                </div>    
                 `;
-            htmlCarrito.appendChild(row);
-            total.innerHTML = `Monto total: $${sumadorDePrecios()}`
-            
+                htmlCarrito.appendChild(row);
+                total.innerHTML = `Monto total: $${sumadorDePrecios()}`
             }
         })
-        
-     }
-        
+    }
     else {
         cantidadCarrito()
         presentarInfo(toggles, 'd-none');
-        
     }
     presentarInfo(toggles, 'd-none');
-    }
-    
+}
 
 //Funcion que limpia el html del carrito
 
@@ -156,34 +166,72 @@ function presentarInfo(array, clase) {
     });
 }
 
-//Evento para eliminar productos del carrito
+//Evento para disminuir cantidad dentro del carrito
 
-htmlCarrito.addEventListener("click", eliminarProductoLS)
+htmlCarrito.addEventListener("click", disminuirCantidad)
 
-//Funcion para eliminar productos
+//Funcion para disminuir cantidad dentro del carrito
 
-function eliminarProductoLS(e) {
-
-    if (e.target.classList.contains("btn-danger")) {
+function disminuirCantidad(e) {
+    if (e.target.classList.contains("disminuir")) {
         let productoID = e.target.getAttribute("id");
-        //localStorage.removeItem(`producto${productoID}`)
-        const buscar = carrito.find(e=>e.id == productoID);
-        const resta = buscar.cantidad-1;
-        const filtro = carrito.filter((el) => el.id != productoID);        
+        const buscar = carrito.find(e => e.id == productoID);
+        const posicion = carrito.indexOf(buscar);
 
-        if(resta !=0){
-            carrito =  [...filtro,{...buscar, cantidad: resta}]
-        } else{
-            carrito = [...filtro]
+        if (buscar.cantidad > 1) {
+            carrito[posicion].cantidad = buscar.cantidad - 1;
+            localStorage.setItem("carrito", JSON.stringify(carrito)); 
         }
-        
+        else {
+            carrito[posicion].cantidad = 1;
+        }
+        localStorage.setItem("carrito", JSON.stringify(carrito));
+        presentarInfo(toggles, 'd-none');
+        cantidadCarrito();
+        carritoHTML();
+    }
+}
+
+//Evento para aumentar cantidad dentro de carrito
+
+htmlCarrito.addEventListener("click", aumentarCantidad)
+
+//Funcion para aumentar cantidad dentro de carrito
+
+function aumentarCantidad(e) {
+
+    if (e.target.classList.contains("btn-primary")) {
+        let productoID = e.target.getAttribute("id");
+        const buscar = carrito.find(e => e.id == productoID);
+        const posicion = carrito.indexOf(buscar);
+
+        carrito[posicion].cantidad = buscar.cantidad + 1;
+
+        localStorage.setItem("carrito", JSON.stringify(carrito));
+        presentarInfo(toggles, 'd-none');
+        cantidadCarrito()
+        carritoHTML();
+    }
+}
+
+
+//Evento para deliminar producto del carrito
+
+htmlCarrito.addEventListener("click", eliminarProducto)
+
+//Funcion para eliminar producto del carrito
+
+function eliminarProducto(e) {
+    if (e.target.classList.contains("eliminar")) {
+        let productoID = e.target.getAttribute("id");
+        const filtro = carrito.filter((el) => el.id != productoID);        
+        carrito = [...filtro];                
         localStorage.setItem("carrito", JSON.stringify(carrito));
         presentarInfo(toggles, 'd-none');
         cantidadCarrito()
         carritoHTML(); 
     }
 }
-
 
 //Eventos para cerrar el carrito
 
@@ -204,15 +252,13 @@ function cerrarCarrito() {
     }
 }
 
-
-
 // Función de monto total
 
 function sumadorDePrecios() {
     let montoTotal = 0;
     carrito.forEach(el => {
         const precio = Number(el.precio.replace('.', ''));
-        const totalElemento = precio*el.cantidad
+        const totalElemento = precio * el.cantidad
         montoTotal += totalElemento;
     })
     const formateador = new Intl.NumberFormat('es-ES');

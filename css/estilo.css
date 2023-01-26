@@ -128,14 +128,33 @@
 
 #formulario .form hr { padding-bottom: 8px; }
 
-#nuevoHtml{ background-color:white;border-left-style: solid; border-top: solid ; border-bottom: solid ;border-color: black; position: absolute; top: 60px; right: 0px; width:350px; height:1080px; overflow: scroll;}
+#nuevoHtml{ background-color:white;border-left-style: solid; border-top: solid ; border-bottom: solid ;border-color: black; position: absolute; top: 60px; right: 0px; width:440px; height:1080px; overflow: scroll;}
 
 #nuevoHtml .h2 {font-family: "Montserrat", sans-serif; font-size: 10rem;}
 
 #btnHtmlCarrito {position: relative; }
 
 #btnHtmlCarrito span { position: absolute; right: 1px;}
-               
+
+#tituloCarrito { width:420px; margin-bottom: 6px;}
+
+#tituloCarrito .hProd {margin-left:4px;width: 140px;}
+
+#tituloCarrito .hProd h3 {margin-left: 2px;}  
+
+#tituloCarrito .hPre {margin-left: 36px; width: 70px; }
+
+#tituloCarrito .hPre h3 {margin-left: 2px;}  
+
+#tituloCarrito .hCant {margin-left: 25px;width: 70px; }
+
+#tituloCarrito .hCant h3 {margin-left: 2px;}  
+
+#tituloCarrito .linea {
+  border-top: 1.3px solid #151515;
+}
+
+#montoTotal { border:solid #151515;padding: 5px}
 
 @media screen and (min-width: 768px) { #principal h2 { padding-top: 4%; }
   #principal p { margin-top: 4%; }
