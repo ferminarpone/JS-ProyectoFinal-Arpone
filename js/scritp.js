@@ -32,7 +32,7 @@ class Producto {
         <div class="col">
             <div class="card">
                 <a href="" data-bs-toggle="modal" data-bs-target="#producto${this.id}">
-                    <img src="${this.img}" class="card-img-top h6"
+                    <img src="${this.img}" class="card-img-top"
                         alt="${this.nombre}">
                 </a>
                 <div class="card-body">
@@ -60,7 +60,6 @@ class Producto {
 const leerDB = async () => {
     const resp = await fetch("./json/DB.json");
     const data = await resp.json();
-
     data.forEach((prod) => {
         let newProducto = new Producto(prod.nombre, prod.precio, prod.id, prod.stock, prod.img);
         productos.push(newProducto);
@@ -85,13 +84,11 @@ cantidadCarrito()
 //Funcion para agregar productos al carrito
 
 function agregarCarrito(producto) {
-
-
     Swal.fire({
+        icon: 'success',    
         width: '350px',
-        icon: 'success',
         title: 'Producto agregado con exito!',
-        confirmButtonText: '<button id="seguirComprando"> Continuar comprando</button>',
+        confirmButtonText: '<button id="seguirComprando">Continuar comprando</button>',
         showCancelButton: true,
         cancelButtonText:'<div id="mostrarCarrito"> <button type="button">Ir al carrito</button> </div>',
     })
@@ -104,18 +101,16 @@ function agregarCarrito(producto) {
         const filtrado = carrito.filter(p => p.id != cargado.id);
         carrito =
             [...filtrado,
-            {
+                {
                 ...cargado,
                 cantidad: cargado.cantidad + 1
-            }
+                }
             ]
         localStorage.setItem("carrito", JSON.stringify(carrito));
     }
     cantidadCarrito()
-
     const carro = document.getElementById("mostrarCarrito");
     carro.addEventListener("click", carritoHTML);
-
 }
 
 //Evento para mostrar el carrito
@@ -131,8 +126,7 @@ function carritoHTML() {
             if (el.cantidad != 0) {
                 row = document.createElement("div");
                 row.innerHTML = ` 
-                <div class="container">
-                
+                <div class="container">                
                     <div class="card d-flex flex-row justify-content-between align-items-center m-2" style="width:420px; height:120px; background-color: #F9F5EB">
                         <div class="d-flex flex-column align-items-center mb-2" style="width: 150px">
                             <h5 class="card-title">${el.nombre}</h5>
@@ -191,7 +185,6 @@ function disminuirCantidad(e) {
         let productoID = e.target.getAttribute("id");
         const buscar = carrito.find(e => e.id == productoID);
         const posicion = carrito.indexOf(buscar);
-
         if (buscar.cantidad > 1) {
             carrito[posicion].cantidad = buscar.cantidad - 1;
             localStorage.setItem("carrito", JSON.stringify(carrito));
@@ -213,14 +206,11 @@ htmlCarrito.addEventListener("click", aumentarCantidad)
 //Funcion para aumentar cantidad dentro de carrito
 
 function aumentarCantidad(e) {
-
     if (e.target.classList.contains("btn-primary")) {
         let productoID = e.target.getAttribute("id");
         const buscar = carrito.find(e => e.id == productoID);
         const posicion = carrito.indexOf(buscar);
-
         carrito[posicion].cantidad = buscar.cantidad + 1;
-
         localStorage.setItem("carrito", JSON.stringify(carrito));
         presentarInfo(toggles, 'd-none');
         cantidadCarrito()
@@ -228,22 +218,36 @@ function aumentarCantidad(e) {
     }
 }
 
-
 //Evento para deliminar producto del carrito
 
 htmlCarrito.addEventListener("click", eliminarProducto)
 
 //Funcion para eliminar producto del carrito
 
-function eliminarProducto(e) {
+function eliminarProducto(e) {   
     if (e.target.classList.contains("eliminar")) {
-        let productoID = e.target.getAttribute("id");
-        const filtro = carrito.filter((el) => el.id != productoID);
-        carrito = [...filtro];
-        localStorage.setItem("carrito", JSON.stringify(carrito));
-        presentarInfo(toggles, 'd-none');
-        cantidadCarrito()
-        carritoHTML();
+        Swal.fire(
+            {
+            icon: 'warning',    
+            width: '400px',
+            title: '¿Estas seguro?',
+            text: "El producto será eliminado del carrito",
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: '<div style="font-size:10px"> Si, eliminar producto!</div>',
+            cancelButtonText: '<div style="font-size:10px"> Cancelar </div>',
+          }).then((result) => {
+            if (result.isConfirmed) {             
+              let productoID = e.target.getAttribute("id");
+              const filtro = carrito.filter((el) => el.id != productoID);
+              carrito = [...filtro];
+              localStorage.setItem("carrito", JSON.stringify(carrito));
+              presentarInfo(toggles, 'd-none');
+              cantidadCarrito()
+              carritoHTML();
+            }
+        })        
     }
 }
 

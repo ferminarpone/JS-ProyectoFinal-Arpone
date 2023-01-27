@@ -98,7 +98,7 @@
 
 #productos img { transition: .5s; height: 200px; }
 
-#productos .card-body { background-color: #F9F5EB; border-radius: 5%; }
+#productos .card-body { background-color: #F9F5EB; border-bottom-left-radius: 5%; border-bottom-right-radius: 5%;}
 
 #productos .card-body a { text-decoration: none; color: inherit; }
 
@@ -150,9 +150,7 @@
 
 #tituloCarrito .hCant h3 {margin-left: 2px;}  
 
-#tituloCarrito .linea {
-  border-top: 1.3px solid #151515;
-}
+#tituloCarrito .linea { border-top: 1.3px solid #151515;}
 
 #montoTotal { border:solid #151515;padding: 5px}
 
