@@ -16,9 +16,9 @@
 
 .menuH { font-size: 30px; color: #151515; margin-right: 20px; cursor: pointer;}
 
-.menu { position: fixed; width: 100%; height: 0vh; top: 60px; background-color: #F9F5EB; text-align: center; transition: .5s; list-style: none; opacity: 0.9; }
+.menu { position: fixed; width: 100%; height: 0vh; top: 60px; background-color: #F9F5EB; text-align: center; transition: 0.5s; list-style: none; opacity: 0.97; }
 
-.menu li { display: none; line-height: 30px; transition: 0.5s; }
+.menu li { display: none; line-height: 30px }
 
 .menu li:hover { transform: scale(1.1); }
 
@@ -28,9 +28,9 @@
 
 #check { display: none; }
 
-#check:checked ~ .menu { height: 165px; }
+#check:checked ~ .menu { height: 200px }
 
-#check:checked ~ .menu li { display: block; }
+#check:checked ~ .menu li { display: block; transition: 2s;}
 
 #principal { display: flex; flex-direction: column; background-image: url(https://images.pexels.com/photos/5845978/pexels-photo-5845978.jpeg?auto=compress&cs=tinysrgb&w=600); background-size: cover; background-position: center center; background-repeat: no-repeat; max-width: 100%; margin-top: 60px; align-items: center; opacity: 0.9; }
 
