@@ -169,12 +169,12 @@ function carritoHTML() {
                     
                         <div class="d-flex align-items-center" >
                             <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
-                                <button type="button" class="btn btn-primary btn-sm mb-1" id="${el.id}">+</button>
-                                <button type="button" class="btn btn-danger disminuir btn-sm" id="${el.id}">-</button>
+                                <button type="button" style="color:#F9F5EB; background-color: #253b5b " class="btn aumentar btn-sm mb-1" id="${el.id}">+</button>
+                                <button type="button" style="color:#F9F5EB; background-color: rgb(174, 62, 62) " class="btn disminuir btn-sm" id="${el.id}">-</button>
                             </div>
-                            <p class=" p-2 ms-2 h6 border border-dark rounded" style="width: 18px">${el.cantidad}</p>
+                            <p class=" p-2 ms-2 h6 border border-dark rounded" style="width: 26px; text-align:center">${el.cantidad}</p>
                         </div>                    
-                        <button type="button" class="btn btn-danger btn-sm eliminar  me-4" id="${el.id}">Eliminar</button>                               
+                        <button type="button" style="color:#F9F5EB; background-color: rgb(174, 62, 62) " class="btn btn-sm eliminar  me-4" id="${el.id}">Eliminar</button>                               
                     </div>
                 </div>    
                 `;
@@ -235,7 +235,7 @@ htmlCarrito.addEventListener("click", aumentarCantidad);
 //Funcion para aumentar cantidad dentro de carrito
 
 function aumentarCantidad(e) {
-  if (e.target.classList.contains("btn-primary")) {
+  if (e.target.classList.contains("aumentar")) {
     let productoID = e.target.getAttribute("id");
     const buscar = carrito.find((e) => e.id == productoID);
     const posicion = carrito.indexOf(buscar);

@@ -20,7 +20,7 @@
 
 .menu li { display: none; line-height: 30px }
 
-.menu li:hover { transform: scale(1.1); }
+.menu li:hover { transform: scale(1.1);  }
 
 .menu li a { color: #151515; text-decoration: none; font-size: 1.2rem; }
 
@@ -136,7 +136,7 @@
 
 #btnHtmlCarrito {position: relative; }
 
-#btnHtmlCarrito span { position: absolute; right: 1px;}
+#btnHtmlCarrito span { position: absolute; left: 15px; }
 
 #tituloCarrito { width:420px; margin-bottom: 6px;}
 
@@ -178,4 +178,4 @@
   .menu ul li a:hover { color: #ff6337db; height: 18px; } }
 
 @media screen and (min-width: 992px) { #nosotros .titNos { font-size: 3rem; }
-  #nosotros .parNos { font-size: 1.5rem; } }
+  #nosotros .parNos { font-size: 1.5rem;} }
