@@ -1,0 +1,15 @@
+[
+    { "titulo":"3 formas de cerrar la ventana 'Carrito'"},
+    {"Primera":"Clickeando 'x'"},
+    {"Segunda":"Clickeando afuera"},
+    {"Tercera":"Elminando producto"},
+    {"Problema":"Cuando id:nuevoHTML NO contenga la clase d-none bloquear scroll en id:productos" },
+
+    {"Funciones afectadas": "113- agregarCarrito -- mostrarCarrito"},
+    {"Funciones afectadas": "174- carritoHTML"},
+    {"Funciones afectadas": "240- disminuirCantidad"},
+    {"Funciones afectadas": "264- aumentarCantidad"},
+    {"Funciones afectadas": "287- eliminarProducto"},
+    {"Funciones afectadas": "320- cerrarCarrito"},
+    {"Funciones afectadas": "329- cerrar carrito"}
+]

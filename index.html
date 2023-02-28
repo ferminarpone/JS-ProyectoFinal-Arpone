@@ -42,7 +42,7 @@
                     <h1><a>EL GALPON DE NINO </a></h1>
                 </div>
 
-                <input type="checkbox" id="check">
+                <input type="checkbox" class="check" id="check">
                 <label for="check" class="menuH">
                     <i class="fa-solid fa-bars"></i>
                 </label>
@@ -69,30 +69,27 @@
 
     <main>
         <section style="position: relative;">
-            <div class="container" id="productos">
-                <div class="introduccion">
-                    <h2 class="text-center">GALERIA DE PRODUCTOS</h2>
-                    <div class="parrafo">
-                        <p>
-                            Nuestros productos de estilo industrial se realizan a medida para cada cliente. <br>
-                            Estos son algunos de nuestros proyectos. <br> <a>
-                                Pedí tu presupuesto!</a>
-                        </p>
+
+            <div id="productos">
+                <div class="container">
+                    <div class="introduccion">
+                        <h2 class="text-center">GALERIA DE PRODUCTOS</h2>
+                        <div class="parrafo">
+                            <p>
+                                Nuestros productos de estilo industrial se realizan a medida para cada cliente. <br>
+                                Estos son algunos de nuestros proyectos. <br> <a>
+                                    Pedí tu presupuesto!</a>
+                            </p>
+                        </div>
+                    </div>
+                        <div id="container" class="row row-cols-2 row-cols-md-4 g-3">                
                     </div>
                 </div>
-
-                <div id="container" class="row row-cols-2 row-cols-md-4 g-3">
-                
-                </div>
             </div>
-
-
-
             <div id="nuevoHtml" class="toggles d-none">
                 <button id="cerrarHtml" type="button" class="btn btn-light "
                     style="position:absolute; right:6px; top:7px;">x</button>
                 <div class="container d-flex flex-column align-items-center">
-
                     <h2 class="m-5">Productos seleccionados
                     </h2>
                     <div id="tituloCarrito" class="d-flex flex-row"> 
@@ -110,7 +107,6 @@
                         </div>
                         <h3> </h3>
                     </div>
-
                     <div class="d-block" id="htmlCarrito">
                     </div>
                 </div>
