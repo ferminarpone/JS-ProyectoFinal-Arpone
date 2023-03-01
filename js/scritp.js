@@ -104,16 +104,19 @@ cantidadCarrito();
 //Funcion para agregar productos al carrito
 
 function agregarCarrito(producto) {
-  Swal.fire({
+   Swal.fire({
     icon: "success",
     width: "350px",
     title: "Producto agregado con exito!",
+    confirmButtonColor: "black",
+    confirmButtonBorder: 'none',
     confirmButtonText:
       '<button id="seguirComprando">Continuar comprando</button>',
     showCancelButton: true,
     cancelButtonText:
       '<div id="mostrarCarrito"> <button type="button">Ir al carrito</button> </div>',
-  });
+    allowOutsideClick: false, 
+  });  
   const cargado = carrito.find((p) => p.id == producto.id);
   if (!cargado) {
     carrito.push({ ...producto, cantidad: 1 });
