@@ -4,21 +4,14 @@ const cantProducto = document.querySelector("#logoCarrito"),
   btnHtmlCarrito = document.querySelector("#btnHtmlCarrito"),
   htmlCarrito = document.querySelector("#htmlCarrito"),
   toggles = document.querySelectorAll(".toggles"),
+  mostrarImg = document.querySelectorAll(".mostrarImg"),
+  imgZoom = document.querySelector("#imgZoom"),
   total = document.querySelector("#montoTotal"),
   cerrarHtml = document.querySelector("#cerrarHtml"),
   clickFuera = document.querySelector("#productos"),
   container = document.querySelector("#container"),
+  comprar = document.querySelector(".comprar"),
   checkMenu = document.querySelector("#check");
-
-let disableScroll = () => {
-  if (!nuevoHtml.classList.contains("d-none")) {
-    clickFuera.classList.add("scroll");
-  } else {
-    if (clickFuera.classList.contains("scroll")) {
-      clickFuera.classList.remove("scroll");
-    }
-  }
-};
 
 //Declaración de variables
 
@@ -42,18 +35,20 @@ class Producto {
     const card = `
         <div class="col">
             <div class="card">
-                    <img src="${this.img}" class="card-img-top"
-                        alt="${this.nombre}">                      
-                <div class="card-body">
+                    <button style="border:none" id="img${this.id}">
+                    <img src="${this.img}" class="card-img-top" 
+                        alt="${this.nombre}"> 
+                    </button>              
+              <div class="card-body">
                     <h3 class="card-title text-center">${this.nombre}</h3>
                     <p class="h5 text-center">$${this.precio}</p>
                     <div class="d-flex justify-content-center">
                         <button class="buttonCard" id="producto${this.id}"> Agregar a
                             carrito </button>
                     </div>
-                </div>
+              </div>
             </div>
-         </div>
+          </div>
         `;
     container.innerHTML += card;
   }
@@ -62,6 +57,29 @@ class Producto {
     const encontrarProd = productos.find((p) => p.id == this.id);
     btnProducto.addEventListener("click", () => agregarCarrito(encontrarProd));
   }
+
+  imgEvento() {
+    const btnImg = document.getElementById(`img${this.id}`);
+    const encontrarImg = productos.find((p) => p.id == this.id);
+    btnImg.addEventListener("click", () => mostrarImagen(encontrarImg));
+  }
+}
+
+//Funcion para mostrar img
+
+function mostrarImagen(producto) {
+  
+  img = document.createElement("div");
+  img.innerHTM = `
+      <div class="imgCenter">
+        <img src="${producto.img}" class="img-fluid rounded" alt="${producto.nombre}">
+    </div>
+    `;
+
+  imgZoom.appendChild(img);
+
+  presentarInfo(mostrarImg, "d-none");
+
 }
 
 //Funcion asincronica para traer informacion de una API/archivo json, como en este caso
@@ -85,6 +103,9 @@ const leerDB = async () => {
   productos.forEach((el) => {
     el.agregarEvento();
   });
+  productos.forEach((el) => {
+    el.imgEvento();
+  });
 };
 
 leerDB();
@@ -104,19 +125,19 @@ cantidadCarrito();
 //Funcion para agregar productos al carrito
 
 function agregarCarrito(producto) {
-   Swal.fire({
+  Swal.fire({
     icon: "success",
     width: "350px",
     title: "Producto agregado con exito!",
-    confirmButtonColor: "black",
-    confirmButtonBorder: 'none',
+    confirmButtonColor: "#253b5b",
+    focusConfirm: false,
     confirmButtonText:
       '<button id="seguirComprando">Continuar comprando</button>',
     showCancelButton: true,
     cancelButtonText:
       '<div id="mostrarCarrito"> <button type="button">Ir al carrito</button> </div>',
-    allowOutsideClick: false, 
-  });  
+    allowOutsideClick: false,
+  });
   const cargado = carrito.find((p) => p.id == producto.id);
   if (!cargado) {
     carrito.push({ ...producto, cantidad: 1 });
@@ -198,6 +219,18 @@ function limpiarHTML() {
   htmlCarrito.innerHTML = "";
 }
 
+//Funcion para bloquear scroll vertical
+
+let disableScroll = () => {
+  if (!nuevoHtml.classList.contains("d-none")) {
+    clickFuera.classList.add("scroll");
+  } else {
+    if (clickFuera.classList.contains("scroll")) {
+      clickFuera.classList.remove("scroll");
+    }
+  }
+};
+
 //Funcion para presentar info oculta
 
 function presentarInfo(array, clase) {
@@ -264,7 +297,7 @@ function eliminarProducto(e) {
       title: "¿Estas seguro?",
       text: "El producto será eliminado del carrito",
       showCancelButton: true,
-      confirmButtonColor: "#3085d6",
+      confirmButtonColor: "#253b5b",
       cancelButtonColor: "#d33",
       confirmButtonText:
         '<div style="font-size:10px"> Si, eliminar producto!</div>',
@@ -314,3 +347,22 @@ function sumadorDePrecios() {
   const numeroFormateado = formateador.format(montoTotal);
   return numeroFormateado;
 }
+
+//Funcion y Evento "Comprar"
+comprar.addEventListener("click", buyProducts);
+
+function buyProducts() {
+  carrito = [];
+  localStorage.setItem("carrito", JSON.stringify(carrito));
+  cerrarCarrito();
+  return Swal.fire({
+    position: "center",
+    icon: "success",
+    title: "Compra realizada!!",
+    text: "Gracias por confirar en nosotros!",
+    showConfirmButton: false,
+    timer: 2500,
+  });
+}
+
+//presentarInfo()

@@ -154,17 +154,19 @@
 
 #tituloCarrito .linea { border-top: 1.3px solid #151515;}
 
-#montoTotal { border:solid #151515;padding: 5px}
-
 #mostrarCarrito button{ all: unset; color: white; font-size:10px;}
 
 #seguirComprando { all: unset; color: white; font-size:10px;}
 
+#footerCart .comprar {background-color:  rgb(174, 62, 62); color:#F9F5EB }
 
-.buttonCard { color:#F9F5EB; background-color: #253b5b; width: 120px; height: 30px; font-size: 12px; border: none; border-radius: 4px;}
+.buttonCard { color:#F9F5EB; background-color: #253b5b; width: 120px; height: 30px; font-size: 12px; border:none; border-radius: 4px;}
 
 .buttonCard:hover { transform: scale(1.05); }
 
+.imgCenter { justify-content: center; }
+
+.imgCenter img { width: 400px; height: 400px; }
 
 
 @media screen and (min-width: 768px) { #principal h2 { padding-top: 4%; }
