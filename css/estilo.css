@@ -164,9 +164,6 @@
 
 .buttonCard:hover { transform: scale(1.05); }
 
-.imgCenter { justify-content: center; }
-
-.imgCenter img { width: 400px; height: 400px; }
 
 
 @media screen and (min-width: 768px) { #principal h2 { padding-top: 4%; }

@@ -4,8 +4,6 @@ const cantProducto = document.querySelector("#logoCarrito"),
   btnHtmlCarrito = document.querySelector("#btnHtmlCarrito"),
   htmlCarrito = document.querySelector("#htmlCarrito"),
   toggles = document.querySelectorAll(".toggles"),
-  mostrarImg = document.querySelectorAll(".mostrarImg"),
-  imgZoom = document.querySelector("#imgZoom"),
   total = document.querySelector("#montoTotal"),
   cerrarHtml = document.querySelector("#cerrarHtml"),
   clickFuera = document.querySelector("#productos"),
@@ -35,10 +33,8 @@ class Producto {
     const card = `
         <div class="col">
             <div class="card">
-                    <button style="border:none" id="img${this.id}">
-                    <img src="${this.img}" class="card-img-top" 
-                        alt="${this.nombre}"> 
-                    </button>              
+                  
+            <img src="${this.img}" class="card-img-top" alt="${this.nombre}">                   
               <div class="card-body">
                     <h3 class="card-title text-center">${this.nombre}</h3>
                     <p class="h5 text-center">$${this.precio}</p>
@@ -57,29 +53,6 @@ class Producto {
     const encontrarProd = productos.find((p) => p.id == this.id);
     btnProducto.addEventListener("click", () => agregarCarrito(encontrarProd));
   }
-
-  imgEvento() {
-    const btnImg = document.getElementById(`img${this.id}`);
-    const encontrarImg = productos.find((p) => p.id == this.id);
-    btnImg.addEventListener("click", () => mostrarImagen(encontrarImg));
-  }
-}
-
-//Funcion para mostrar img
-
-function mostrarImagen(producto) {
-  
-  img = document.createElement("div");
-  img.innerHTM = `
-      <div class="imgCenter">
-        <img src="${producto.img}" class="img-fluid rounded" alt="${producto.nombre}">
-    </div>
-    `;
-
-  imgZoom.appendChild(img);
-
-  presentarInfo(mostrarImg, "d-none");
-
 }
 
 //Funcion asincronica para traer informacion de una API/archivo json, como en este caso
@@ -102,9 +75,6 @@ const leerDB = async () => {
   });
   productos.forEach((el) => {
     el.agregarEvento();
-  });
-  productos.forEach((el) => {
-    el.imgEvento();
   });
 };
 
